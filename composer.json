@@ -1,8 +1,8 @@
 {
-	"name": "sammaye/yii2-advanced-template",
-	"description": "A template for awesomeness.",
+	"name": "jbellomy/yii2-advanced-template",
+	"description": "A yii2 application template, based on sammaye/yii2-advanced-template",
 	"keywords": ["yii2", "framework", "advanced", "application template"],
-	"homepage": "http://www.sammaye.wordpress.com/",
+	"homepage": "",
 	"type": "project",
 	"license": "BSD-3-Clause",
 	"support": {
@@ -16,7 +16,6 @@
 		"yiisoft/yii2": "*",
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-swiftmailer": "*",
-		"yiisoft/yii2-mongodb": "*",
 		"bower-asset/jquery": "~1.11@stable",
 		"bower-asset/jquery-ui": "~1.11@stable",
 		"yiisoft/yii2-jui": "*",

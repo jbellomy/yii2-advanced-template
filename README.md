@@ -108,11 +108,8 @@ Now moved to `common/models`.
 
 Composer has been changed. What it installs by default has been expanded and/or changed.
 
-By default, Composer will download the MongoDB extension. I will explain later how to rid it of that, it is literally 3 lines of changes.
-
 Here is a brief but comprehensive list of changes in composer:
 
-- `yii2-mongodb` has been added and is the default database of the application
 - jQuery installs a IE 8 and 9 compliant edition
 - jQuery UI install a IE 8 and 9 compliant edition
 - `yii2-jui` extension has been added
@@ -143,7 +140,7 @@ The other parts are not so important and do pretty much what they say on the tin
 
 The `params.php` files tends to hold varibles which are helpful. These files are quite bare currently so do not be surprised if you hear nothing of them again.
 
-Some of the configuration is defined within the environments folder too, essentially the database, for example: SQL and MongoDB are both defined in the environments folder's own configuration files.
+Some of the configuration is defined within the environments, for example, the database connections are defined in the environments folder's own configuration files.
 
 ## Controllers
 
@@ -305,10 +302,3 @@ All of the user normal user functions of:
 
 exist in both frontend and backend. As stated above in the "common/models` section I have found time and time again I want these in both backend and frontend, not just frontend.
 
-## Removing MongoDB 
-
-You can easily remove MongoDB from this template by removing the extension line from composer and then running:
-
-	php ./composer.phar update
-
-after which, "grep"-ing for `yii/mongodb/ActiveRecord` and replacing it with `yii/db/ActiveRecord`.

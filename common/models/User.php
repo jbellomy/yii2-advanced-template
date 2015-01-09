@@ -27,11 +27,11 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
-	const ROLE_USER = 'user';
-	const ROLE_AFFILIATE = 'affiliate';
-	const ROLE_STAFF = 'staff';
-	const ROLE_ADMIN = 'admin';
-	const ROLE_GOD = 'god';
+    const ROLE_USER = 'user';
+    const ROLE_AFFILIATE = 'affiliate';
+    const ROLE_STAFF = 'staff';
+    const ROLE_ADMIN = 'admin';
+    const ROLE_GOD = 'god';
 
     /**
      * @inheritdoc
@@ -62,21 +62,21 @@ class User extends ActiveRecord implements IdentityInterface
              ['role', 'in', 'range' => [self::ROLE_USER]],
          ];
      }
-     
+
      public function attributes()
      {
-     	return [
-     		'_id',
-			'username',
-			'password_hash',
-			'password_reset_token',
-			'email',
-			'auth_key',
-			'role',
-			'status',
-			'created_at',
-			'updated_at',
-     	];
+        return [
+            'id',
+            'username',
+            'password_hash',
+            'password_reset_token',
+            'email',
+            'auth_key',
+            'role',
+            'status',
+            'created_at',
+            'updated_at',
+        ];
      }
 
     /**
@@ -105,38 +105,38 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
     }
-	
-	/**
-	 * Finds user by password reset token
-	 *
-	 * @param string $token password reset token
-	 * @return static null
-	 */
-	public static function findByPasswordResetToken($token) {
-		if (! static::isPasswordResetTokenValid($token)) {
-			return null;
-		}
-		return static::findOne([ 
-				'password_reset_token' => $token,
-				'status' => self::STATUS_ACTIVE 
-		]);
-	}
-	
-	/**
-	 * Finds out if password reset token is valid
-	 *
-	 * @param string $token password reset token
-	 * @return boolean
-	 */
-	public static function isPasswordResetTokenValid($token) {
-		if (empty($token)){
-			return false;
-		}
-		$expire = Yii::$app->params['user.passwordResetTokenExpire'];
-		$parts = explode( '_', $token );
-		$timestamp = (int)end($parts);
-		return $timestamp + $expire >= time();
-	}
+
+    /**
+     * Finds user by password reset token
+     *
+     * @param string $token password reset token
+     * @return static null
+     */
+    public static function findByPasswordResetToken($token) {
+        if (! static::isPasswordResetTokenValid($token)) {
+            return null;
+        }
+        return static::findOne([
+                'password_reset_token' => $token,
+                'status' => self::STATUS_ACTIVE
+        ]);
+    }
+
+    /**
+     * Finds out if password reset token is valid
+     *
+     * @param string $token password reset token
+     * @return boolean
+     */
+    public static function isPasswordResetTokenValid($token) {
+        if (empty($token)){
+            return false;
+        }
+        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
+        $parts = explode( '_', $token );
+        $timestamp = (int)end($parts);
+        return $timestamp + $expire >= time();
+    }
 
     /**
      * @inheritdoc
